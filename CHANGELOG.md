@@ -24,6 +24,10 @@ The Anam avatar plugin now depends on `anam>=0.6.0,<0.7` (was `>=0.3.0,<0.4`). S
 
 ## Bug Fixes
 
+### `speechify` plugin: set `Speechify-Caller` attribution header
+
+`speechify.TTS` now passes `Speechify-Caller: vision-agents` on every request to the Speechify API, so usage from this plugin is attributed correctly instead of showing up unattributed.
+
 ### `twelvelabs` plugin: asset ready wait and clip duration for Pegasus (#610)
 
 `PegasusVLM` now polls the TwelveLabs Assets API until an uploaded clip is `ready` before `analyze_stream` — direct uploads return `processing` and must not be analyzed early. Encoded MP4 clips also set PTS/`time_base` so padded buffers report at least 4 seconds of duration (Pegasus's minimum). Uploaded assets are still deleted if ready-wait fails or times out.
